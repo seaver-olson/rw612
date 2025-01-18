@@ -1,21 +1,27 @@
-
-
 #include <stdint.h>
+
+//stack pointer
+extern uint32_t _estack;
 
 int main();
 void Reset_Handler();
 
-extern uint32_t _estack;
- __attribute__((section(".vectors"))) const uint32_t vectors[] = {
-&_estack,
-Reset_Handler};
+ __attribute__((section(".vectors"))) 
+const uint32_t vectors[] = {
+  (uint32_t) &_estack,
+  (uint32_t) Reset_Handler
+};
 
 
 void Reset_Handler() {
     main();
-    for(;;);
+    while (true) {
+    }
 }
 
 int main() {
-  for(;;);
+  while (true){
+
+  }
+ return 0;
 }
